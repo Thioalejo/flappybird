@@ -1,4 +1,5 @@
 extends Node2D
+class_name Obstacle
 
 signal on_player_crashed # player a collisionado
 
@@ -6,6 +7,9 @@ signal on_player_crashed # player a collisionado
 
 func _process(delta: float) -> void:
 	position.x -= move_speed * delta
+
+func set_speed(value:float) -> void:
+	move_speed = value
 
 #Señal reutilizada para ostaculo top y botton
 func _on_area_body_entered(body: Node2D) -> void:
