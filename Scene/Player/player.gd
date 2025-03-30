@@ -1,16 +1,31 @@
 extends CharacterBody2D
 
+#señal para ser consumida desde el main o cualquier sitio.
+signal on_game_started
+
 @export var gravity := 1000.0
 @export var jump_force := 400.0
 @export var max_speed :=400.0
 @export var rotation_speed := 2.0
 
+var is_started := false
+#para controlar el input cuando el persona ya pierde o queremos que ya no salte
+var should_process_input := true
+
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("jump") and should_process_input:
+		if is_started == false:
+			is_started = true
+			on_game_started.emit()
+		jump()
+	
+	if is_started == false:
+		return		
+	
 	velocity.y += gravity * delta
 	velocity.y = min(velocity.y, max_speed)
 	
-	if Input.is_action_pressed("jump"):
-		jump()
+
 	
 	move_and_slide()
 	rotate_player()
