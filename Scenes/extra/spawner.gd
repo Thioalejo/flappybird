@@ -2,6 +2,7 @@ extends Node
 class_name Spawner
 
 signal on_obstacle_crashed
+signal on_player_score
 
 const OBSTACLE_SCENE = preload("res://Scenes/Obstacle/obstacle.tscn")
 @onready var timer: Timer = $Timer
@@ -9,6 +10,7 @@ const OBSTACLE_SCENE = preload("res://Scenes/Obstacle/obstacle.tscn")
 func spawn_obstacle() -> void:
 	var obs_instance: Obstacle = OBSTACLE_SCENE.instantiate()
 	obs_instance.on_player_crashed.connect(_on_player_crashed)
+	obs_instance.on_player_scored.connect(_on_player_scored)
 	#referencia de viewport para trar ostaculos fuera de la pantalla
 	var viewport: Viewport = get_viewport()
 	#para posicionar ostaculo 150 puntos fuera de la pantalla
@@ -31,7 +33,8 @@ func _on_player_crashed()-> void:
 	on_obstacle_crashed.emit()
 	stop_obstacles() 
 
-
+func _on_player_scored() -> void:
+	on_player_score.emit()
 
 func _on_timer_timeout() -> void:
 	spawn_obstacle()

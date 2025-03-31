@@ -25,4 +25,5 @@ position = Vector2(0, 833)
 
 [connection signal="on_game_started" from="Player" to="." method="_on_player_on_game_started"]
 [connection signal="on_obstacle_crashed" from="Spawner" to="." method="_on_spawner_on_obstacle_crashed"]
+[connection signal="on_player_score" from="Spawner" to="." method="_on_spawner_on_player_score"]
 [connection signal="on_player_crsh" from="Ground" to="." method="_on_ground_on_player_crsh"]
