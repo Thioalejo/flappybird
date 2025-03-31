@@ -19,7 +19,7 @@ func spawn_obstacle() -> void:
 	#Instancia de cada ostaculo de manera en random
 	#Devulve la posicion central del eje Y
 	var half_height = viewport.size.y /2
-	obs_instance.position.y = randf_range(half_height + 240, half_height - 50)
+	obs_instance.position.y = randf_range(half_height + 320, half_height - 50)
 	
 	add_child(obs_instance)
 	
