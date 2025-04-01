@@ -7,13 +7,14 @@ signal on_game_started
 @export var jump_force := 400.0
 @export var max_speed :=400.0
 @export var rotation_speed := 2.0
+@onready var jump_audio: AudioStreamPlayer2D = $JumpAudio
 
 var is_started := false
 #para controlar el input cuando el persona ya pierde o queremos que ya no salte
 var should_process_input := true
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("jump") and should_process_input:
+	if Input.is_action_just_pressed("jump") and should_process_input:
 		if is_started == false:
 			is_started = true
 			on_game_started.emit()
@@ -29,8 +30,11 @@ func _physics_process(delta: float) -> void:
 	rotate_player()
 
 func jump() -> void:
+	jump_audio.play()
 	velocity.y = -jump_force
 	rotation = deg_to_rad(-30)
+	
+	
 	
 func rotate_player() -> void:
 	if velocity.y > 0 and rad_to_deg(rotation) < 90:

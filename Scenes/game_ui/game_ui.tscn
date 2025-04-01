@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://cqhrc53jyagwh"]
 
-[ext_resource type="Script" uid="uid://ce8phyfqst713" path="res://Scenes/game_ui/canvas_ui.gd" id="1_rrrjh"]
+[ext_resource type="Script" uid="uid://ce8phyfqst713" path="res://Scenes/game_ui/game_ui.gd" id="1_rrrjh"]
 [ext_resource type="LabelSettings" uid="uid://bto8qpqkie5ag" path="res://label_75.tres" id="2_8ltpb"]
 [ext_resource type="Texture2D" uid="uid://dhcfq1juug1ru" path="res://Assets/Sprites/UI/textGetReady.png" id="3_qmmd8"]
 [ext_resource type="Texture2D" uid="uid://c42nhwabeqalv" path="res://Assets/Sprites/UI/tapTick.png" id="4_2ucyi"]
